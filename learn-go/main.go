@@ -5,15 +5,30 @@ import (
 	"errors"
 )
 
+// func main(){
+//     ans,err := devide(1,020)
+
+// 	if err!=nil{
+// 		fmt.Print("Error",err)
+// 		return
+// 	}
+
+// 	fmt.Print(ans)
+// }
+
 func main(){
-    ans,err := devide(1,020)
+	defer fmt.Println("first")
+	 fmt.Println("2nd")
 
-	if err!=nil{
-		fmt.Print("Error",err)
-		return
-	}
-
-	fmt.Print(ans)
+	 prices := []int {1,2,3,4,5}
+	 prices = append(prices,6)
+	 fmt.Println(prices)
+	 fmt.Println(len(prices))
+	 fmt.Println(prices[3])
+	fmt.Println("loop ")
+	 for i ,v := range prices {
+		fmt.Println(i,v)
+	 }
 }
 
 
