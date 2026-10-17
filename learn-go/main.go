@@ -29,8 +29,57 @@ func main(){
 	 for i ,v := range prices {
 		fmt.Println(i,v)
 	 }
-}
 
+	 stocks := map[string]float64{
+		"apple":100,
+		"banana":200,
+		"orange":300,
+	 }
+
+	 stocks["owner"]=5
+	 price,ok := stocks["apple"]
+
+	 if !ok{
+		fmt.Println("apple not found")
+	 }
+
+	 fmt.Println("apple found the stocks we have ",price)
+
+	 for k,v := range stocks{
+		fmt.Println(k,v)
+	 }
+	fmt.Println(stocks)
+
+	fmt.Println("apple stcks we have this ",stocks["apple"])
+
+	hellow()
+	min,max,avg,err := stats([]float64{1,2,3,4,5})
+	fmt.Println("min",min)
+	fmt.Println("max",max)
+	fmt.Println("avg",avg)
+	fmt.Println("err",err)
+
+}
+func stats(prices []float64) (min, max, avg float64, err error){
+	if len(prices)==0{
+		return 0,0,0,errors.New("empty slice")
+	}
+
+	min = prices[0]
+	max = prices[0]
+	avg = 0
+	for _,v := range prices{
+		if v>max{
+			max=v
+		}
+		if v<min{
+			min=v
+		}
+		avg+=v
+	}
+	avg = avg/float64(len(prices))
+	return 
+}
 
 func hellow(){
 	fmt.Println("hello")
