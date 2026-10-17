@@ -16,50 +16,50 @@ import (
 // 	fmt.Print(ans)
 // }
 
-func main(){
-	defer fmt.Println("first")
-	 fmt.Println("2nd")
+// func main(){
+// 	defer fmt.Println("first")
+// 	 fmt.Println("2nd")
 
-	 prices := []int {1,2,3,4,5}
-	 prices = append(prices,6)
-	 fmt.Println(prices)
-	 fmt.Println(len(prices))
-	 fmt.Println(prices[3])
-	fmt.Println("loop ")
-	 for i ,v := range prices {
-		fmt.Println(i,v)
-	 }
+// 	 prices := []int {1,2,3,4,5}
+// 	 prices = append(prices,6)
+// 	 fmt.Println(prices)
+// 	 fmt.Println(len(prices))
+// 	 fmt.Println(prices[3])
+// 	fmt.Println("loop ")
+// 	 for i ,v := range prices {
+// 		fmt.Println(i,v)
+// 	 }
 
-	 stocks := map[string]float64{
-		"apple":100,
-		"banana":200,
-		"orange":300,
-	 }
+// 	 stocks := map[string]float64{
+// 		"apple":100,
+// 		"banana":200,
+// 		"orange":300,
+// 	 }
 
-	 stocks["owner"]=5
-	 price,ok := stocks["apple"]
+// 	 stocks["owner"]=5
+// 	 price,ok := stocks["apple"]
 
-	 if !ok{
-		fmt.Println("apple not found")
-	 }
+// 	 if !ok{
+// 		fmt.Println("apple not found")
+// 	 }
 
-	 fmt.Println("apple found the stocks we have ",price)
+// 	 fmt.Println("apple found the stocks we have ",price)
 
-	 for k,v := range stocks{
-		fmt.Println(k,v)
-	 }
-	fmt.Println(stocks)
+// 	 for k,v := range stocks{
+// 		fmt.Println(k,v)
+// 	 }
+// 	fmt.Println(stocks)
 
-	fmt.Println("apple stcks we have this ",stocks["apple"])
+// 	fmt.Println("apple stcks we have this ",stocks["apple"])
 
-	hellow()
-	min,max,avg,err := stats([]float64{1,2,3,4,5})
-	fmt.Println("min",min)
-	fmt.Println("max",max)
-	fmt.Println("avg",avg)
-	fmt.Println("err",err)
+// 	hellow()
+// 	min,max,avg,err := stats([]float64{1,2,3,4,5})
+// 	fmt.Println("min",min)
+// 	fmt.Println("max",max)
+// 	fmt.Println("avg",avg)
+// 	fmt.Println("err",err)
 
-}
+// }
 func stats(prices []float64) (min, max, avg float64, err error){
 	if len(prices)==0{
 		return 0,0,0,errors.New("empty slice")
@@ -105,4 +105,40 @@ func devide(a,b float64) (float64,error){
 	}
 
 	return a/b,nil
+}
+
+
+type Stock struct {
+    Symbol string
+    Price  float64
+    Qty    int
+}
+
+
+func main (){
+	s1:= Stock {
+		Symbol:"apple",
+		Price:100,
+		Qty:10,
+	}
+
+	var s2 Stock
+
+	s2.Symbol="apple"
+	s2.Price=100
+	s2.Qty=10
+
+	fmt.Println(s1)
+	fmt.Println(s2)
+	fmt.Println(s2.totalValue())
+	s1.addQuntity(10)
+	fmt.Println(s1)
+}
+
+func (s Stock ) totalValue() float64{
+	return s.Price * float64(s.Qty)
+}
+
+func (s *Stock) addQuntity(n int){
+	s.Qty += n 
 }
