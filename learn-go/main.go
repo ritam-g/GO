@@ -133,7 +133,14 @@ func main (){
 	fmt.Println(s2.totalValue())
 	s1.addQuntity(10)
 	fmt.Println(s1)
+
+
+	s4:= newStock("INFY", 100)
+	s4.addQuntity(20)
+
+	fmt.Println(s4)
 }
+
 
 func (s Stock ) totalValue() float64{
 	return s.Price * float64(s.Qty)
@@ -141,4 +148,8 @@ func (s Stock ) totalValue() float64{
 
 func (s *Stock) addQuntity(n int){
 	s.Qty += n 
+}
+
+func newStock(symbol string, price float64 ) *Stock{
+	return &Stock{Symbol:symbol,Price:price}
 }
