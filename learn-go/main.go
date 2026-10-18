@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"errors"
+	"encoding/json"
 )
 
 // func main(){
@@ -115,31 +116,31 @@ type Stock struct {
 }
 
 
-func main (){
-	s1:= Stock {
-		Symbol:"apple",
-		Price:100,
-		Qty:10,
-	}
+// func main (){
+// 	s1:= Stock {
+// 		Symbol:"apple",
+// 		Price:100,
+// 		Qty:10,
+// 	}
 
-	var s2 Stock
+// 	var s2 Stock
 
-	s2.Symbol="apple"
-	s2.Price=100
-	s2.Qty=10
+// 	s2.Symbol="apple"
+// 	s2.Price=100
+// 	s2.Qty=10
 
-	fmt.Println(s1)
-	fmt.Println(s2)
-	fmt.Println(s2.totalValue())
-	s1.addQuntity(10)
-	fmt.Println(s1)
+// 	fmt.Println(s1)
+// 	fmt.Println(s2)
+// 	fmt.Println(s2.totalValue())
+// 	s1.addQuntity(10)
+// 	fmt.Println(s1)
 
 
-	s4:= newStock("INFY", 100)
-	s4.addQuntity(20)
+// 	s4:= newStock("INFY", 100)
+// 	s4.addQuntity(20)
 
-	fmt.Println(s4)
-}
+// 	fmt.Println(s4)
+// }
 
 
 func (s Stock ) totalValue() float64{
@@ -152,4 +153,45 @@ func (s *Stock) addQuntity(n int){
 
 func newStock(symbol string, price float64 ) *Stock{
 	return &Stock{Symbol:symbol,Price:price}
+}
+
+
+type Order struct {
+    ID     int     `json:"id"`
+    Symbol string  `json:"symbol"`
+    Price  float64 `json:"price"`
+}
+
+type totalPrice interface{
+	total() float64
+}
+
+func (s Stock) total() float64{
+	return s.Price * float64(s.Qty)
+}
+
+func main() {
+    data := []byte(`{"id":1,"symbol":"INFY","price":1500.5}`)
+
+    var o Order
+    err := json.Unmarshal(data, &o)
+    if err != nil {
+        fmt.Println("Error:", err)
+        return
+    }
+
+    out, err := json.Marshal(o)
+    if err != nil {
+        fmt.Println("Error:", err)
+        return
+    }
+
+    fmt.Println(string(out))
+
+	s1:= Stock {
+		Symbol:"apple",
+		Price:100,
+		Qty:10,
+	}
+	fmt.Println(s1.total())
 }

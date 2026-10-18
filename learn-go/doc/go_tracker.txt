@@ -1,0 +1,69 @@
+need to start form here ok 
+
+
+
+done Map (like a JS object or Map)
+
+start from here Constructor function (Go has no constructor keyword)
+
+# Your Go Learning Tracker
+
+## Table 1: Theory (what I have taught you)
+
+| # | Topic | Status |
+|---|---|---|
+| 1 | Setup + first program | ✅ Done |
+| 2 | Variables and types | ✅ Done |
+| 3 | If, loops, switch | ✅ Done |
+| 4 | Functions + error handling | ✅ Done |
+| 5 | Slices and maps | ✅ Done |
+| 6 | Structs + methods (receivers) + JSON | ✅ Done |
+| 7 | Interfaces | ✅ Done |
+| 8 | Goroutines | ❌ Not done |
+| 9 | Channels + `select` | ❌ Not done |
+| 10 | WaitGroup + Mutex + mini project | ❌ Not done |
+| 11 | `context.Context` | ❌ Not done |
+| 12 | Worker pool pattern | ❌ Not done |
+| 13 | `net/http` (call APIs) | ❌ Not done |
+| 14 | Packages and project structure | ❌ Not done |
+| 15 | Basic testing (`go test`) | ❌ Optional |
+
+## Table 2: Your practice (you must do these)
+
+I cannot see your work, so all are **not done** until you send me the code.
+
+| # | Practice task | Status |
+|---|---|---|
+| 1 | Print name and city | ⬜ Not done |
+| 2 | Stock total value (`price * float64(qty)`) | ⬜ Not done |
+| 3 | Print 1 to 20 with Fizz for multiples of 3 | ⬜ Not done |
+| 4 | `average()` function with error | ⬜ Not done |
+| 5 | Map of 4 stocks, filter above 1000, add and delete | ⬜ Not done |
+| 6 | `stats()` challenge (min, max, avg) | ⬜ Not done |
+| 7 | `Order` struct + `Total()` + `Increase()` + JSON | ⬜ Not done |
+| 8 | `Notifier` interface (Email and SMS) | ⬜ Not done |
+| 9 | `Portfolio` challenge | ⬜ Not done |
+
+Change ⬜ to ✅ when you finish each one.
+
+## Table 3: Project topics (after Go basics)
+
+| # | Topic | Status |
+|---|---|---|
+| 1 | Wails + Svelte bridge (bindings and events) | ❌ Not done |
+| 2 | GoKiteConnect (login, holdings, orders, live ticks) | ❌ Not done |
+| 3 | Secret handling / private backend (keychain or proxy) | ❌ Not done |
+| 4 | Migration plan + summary for Ritvik Sir | ❌ Not done |
+
+## Summary
+
+| Area | Done | Left |
+|---|---|---|
+| Theory (core Go) | 7 | 8 |
+| Practice tasks | 0 (not sent) | 9 |
+| Project topics | 0 | 4 |
+
+## Your next action
+
+1. Do practice tasks 1 to 9 and paste your code here.
+2. Say **"next"** and I will teach **Goroutines and Channels** (Steps 8 and 9).
