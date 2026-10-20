@@ -13,29 +13,17 @@ func fetchPrice(symbol string,ch chan string){
 	ch <- "Price of " + symbol + " fetched"
 }
 
-func main(){
-	// ch := make(chan string)
+func main() {
+    ch := make(chan int)
 
-	// go func(){
-	// 	ch <- "hello this is go cahnnel "
-	// }()
+    go func() {
+        for i := 1; i <= 5; i++ {
+            ch <- i
+        }
+        close(ch) // done sending
+    }()
 
-	// msg := <-ch
-
-	// fmt.Println(msg)
-
-	symbols := []string{"INFY", "TCS", "WIPRO"}
-
-	ch := make(chan string)
-
-	for _,s:= range symbols{
-		go fetchPrice(s,ch)
-	}
-
-
-	for i:=0; i <len(symbols);i++{
-		fmt.Println(<-ch)
-	}
-
-
+    for v := range ch { // loops until channel is closed
+        fmt.Println(v)
+    }
 }
