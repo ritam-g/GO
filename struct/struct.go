@@ -12,6 +12,18 @@ type order struct {
 	createdAt time.Time
 }
 
+func newOrder(id string,amount float64,status string)*order{
+	
+	myOrder:= order{
+		id: id,
+		status: status,
+		amount: amount,
+		createdAt: time.Now(),
+	}
+
+	return &myOrder
+}
+
 //pointer matters becuse end of the we are passing like varible right so it should point with same pointer as well 
 func (o *order) changeStatus(status string){
 	o.status=status
@@ -35,5 +47,9 @@ func main() {
 	order.changeStatus("completed")
 	fmt.Println("Ur new order details ",order)
 	fmt.Println("order amount is ",order.getAmount())
+
+	order2:=newOrder("2",200.3,"completed")
+
+	fmt.Println(order2)
 
 }
