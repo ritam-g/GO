@@ -52,4 +52,34 @@ func main() {
 
 	fmt.Println(order2)
 
+	fmt.Println("blow side update")
+	main2()
+
+}
+
+type costomer struct{
+	name string
+	age int
+}
+type order2 struct {
+	id        string
+	status    string
+	amount    float64
+	createdAt time.Time
+	costomer
+}
+func main2(){
+	order:= order2{
+		id: "1",
+		status: "pending",
+		amount: 100,
+		createdAt: time.Now(),
+		costomer: costomer{
+			name: "ritam",
+			age: 22,
+		},
+	}
+
+	fmt.Println(order)
+
 }
