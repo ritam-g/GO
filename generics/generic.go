@@ -15,6 +15,10 @@ func loops2[T string| bool](items []T) {
 	}
 }
 
+type stack[T string | bool] struct{
+	elements []T
+}
+
 func main() {
 
 
@@ -27,4 +31,10 @@ func main() {
 	fmt.Println("with genrics which is string or bool ")
 	loops2(items2)
 	loops2(items3)
+
+	ele:= stack[string]{
+		elements: []string{"ritam","maty"},
+	}
+
+	fmt.Println(ele)
 }
