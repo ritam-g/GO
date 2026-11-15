@@ -27,7 +27,7 @@ func task(done chan bool){
 	fmt.Println("processing....")
 }
 
-func sendEmail(emailChain chan string, done chan bool){
+func sendEmail(emailChain <-chan string, done chan <- bool){
 	defer func(){done <- true}()
 
 	for email:= range emailChain{
@@ -36,18 +36,33 @@ func sendEmail(emailChain chan string, done chan bool){
 }
 func main() {
 
+	chan1:= make(chan int)
+	chan2:= make(chan string)
 
-	emailChain := make(chan string ,100)
-	done := make(chan bool)
-	for i:=range 100{
-		emailChain<- fmt.Sprintf("email %d",i)
+
+	go func(){chan1 <- 10}()
+	go func(){chan2 <- "hellow"}()
+
+	for i:=0;i<2;i++{
+		select{
+		case c1:= <-chan1:
+			fmt.Println(c1)
+		case c2:= <-chan2:
+			fmt.Println(c2)
+		}
 	}
-	// Tell the receiver: no more emails are coming
-	close(emailChain)
-	
-	go sendEmail(emailChain,done)
 
-	<- done
+	// emailChain := make(chan string ,100)
+	// done := make(chan bool)
+	// for i:=range 100{
+	// 	emailChain<- fmt.Sprintf("email %d",i)
+	// }
+	// // Tell the receiver: no more emails are coming
+	// close(emailChain)
+
+	// go sendEmail(emailChain,done)
+
+	// <- done
 	// emailChain <- "email 1"
 	// emailChain <- "email 2"
 
