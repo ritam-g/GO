@@ -26,12 +26,38 @@ func task(done chan bool){
 
 	fmt.Println("processing....")
 }
+
+func sendEmail(emailChain chan string, done chan bool){
+	defer func(){done <- true}()
+
+	for email:= range emailChain{
+		fmt.Println("email sent ",email)
+	}
+}
 func main() {
 
+
+	emailChain := make(chan string ,100)
 	done := make(chan bool)
-	go task(done)
+	for i:=range 100{
+		emailChain<- fmt.Sprintf("email %d",i)
+	}
+	// Tell the receiver: no more emails are coming
+	close(emailChain)
 	
-	<-done //kind of wait group blocking system 
+	go sendEmail(emailChain,done)
+
+	<- done
+	// emailChain <- "email 1"
+	// emailChain <- "email 2"
+
+	// fmt.Println(<-emailChain)
+	// fmt.Println(<-emailChain)
+
+	// done := make(chan bool)
+	// go task(done)
+	
+	// <-done //kind of wait group blocking system 
 
 	// res := make(chan int )
 
