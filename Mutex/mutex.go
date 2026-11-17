@@ -15,8 +15,6 @@ func (p *post) inc(wg *sync.WaitGroup){
 		 }()
 	p.mu.Lock()
 	p.views +=1
-	
-	
 }
 func main (){
    p:= post{views:0}
